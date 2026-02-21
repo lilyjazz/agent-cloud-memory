@@ -10,9 +10,9 @@ The system follows a **Client-Serverless** model. The Agent (Client) interacts d
 
 ```mermaid
 graph TD
-    A[Agent (Local)] -->|Provision (curl)| B[TiDB Cloud API]
+    A["Agent (Local)"] -->|Provision curl| B["TiDB Cloud API"]
     B -->|Returns DSN| A
-    A -->|SQL (pymysql)| C[TiDB Zero Database]
+    A -->|SQL pymysql| C["TiDB Zero Database"]
     
     subgraph "Skill: Hive Mind"
     A -- "SET key=val" --> C
@@ -20,8 +20,8 @@ graph TD
     end
     
     subgraph "Skill: Teleport"
-    A -- "Pack (tar.gz)" --> C
-    C -- "Restore (blob)" --> D[New Agent (Remote)]
+    A -- "Pack tar.gz" --> C
+    C -- "Restore blob" --> D["New Agent (Remote)"]
     end
 ```
 
