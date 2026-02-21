@@ -1,7 +1,15 @@
 # ☁️ Agent Cloud Memory
 
+<div align="center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3](https://img.shields.io/badge/Python-3-blue.svg)](https://www.python.org/)
+[![Serverless](https://img.shields.io/badge/Serverless-TiDB%20Zero-pink.svg)](https://tidb.cloud)
+
 **The Serverless "Soul" for AI Agents.**
-*Powered by [TiDB Cloud Zero](https://tidb.cloud).*
+*Give your agent persistence, mobility, and infinite memory in 30 seconds.*
+
+</div>
 
 > **The Problem:** AI Agents are like goldfish in a bowl. They have 7-second memories (Context Window) and are trapped in their local machine (Stateless).
 >
@@ -9,7 +17,18 @@
 
 ---
 
-## 📦 The 4 Superpowers (Skills)
+## ⚡️ Quick Links
+
+| Skill | Superpower | Metaphor |
+| :--- | :--- | :--- |
+| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *RPG Save Game / Time Machine* |
+| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Preference** | *iCloud / Chrome Sync* |
+| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Google Search for Brain* |
+| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Recorder* |
+
+---
+
+## 📦 The 4 Superpowers (Deep Dive)
 
 ### 1. 🧳 Agent Teleport (Soul Transfer)
 > *The "Time Machine" Backup.*
