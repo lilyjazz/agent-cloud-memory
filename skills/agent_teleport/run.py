@@ -23,12 +23,17 @@ IGNORE_PATTERNS = [
 # --- Provisioner ---
 def create_temp_db():
     api_url = "https://zero.tidbapi.com/v1alpha1/instances"
-    try:
-        cmd = ["curl", "-sS", "-X", "POST", api_url, "-H", "content-type: application/json", "-d", "{}"]
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        data = json.loads(result.stdout)
-        return data.get("instance", {}).get("connectionString")
-    except: return None
+    for i in range(3):
+        try:
+            cmd = ["curl", "-sS", "-X", "POST", api_url, "-H", "content-type: application/json", "-d", "{}"]
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            if result.returncode == 0:
+                data = json.loads(result.stdout)
+                dsn = data.get("instance", {}).get("connectionString")
+                if dsn: return dsn
+        except:
+            time.sleep(2)
+    return None
 
 def parse_dsn(dsn):
     prefix = "mysql://"
@@ -124,6 +129,10 @@ def teleport_in(dsn):
         # Extract
         bio = io.BytesIO(blob)
         with tarfile.open(fileobj=bio, mode="r:gz") as tar:
+            # Security check for Zip Slip
+            for member in tar.getmembers():
+                if os.path.isabs(member.name) or ".." in member.name:
+                    raise Exception(f"Security Error: Archive contains unsafe path {member.name}")
             tar.extractall(path=".") # Extract to current dir, overwriting
             
         return {"success": True, "message": "Workspace restored successfully!"}

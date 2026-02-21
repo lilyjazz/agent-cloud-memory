@@ -32,14 +32,18 @@ def get_embedding(text):
 
 # --- 2. Provisioner ---
 def create_temp_db():
-    # Similar provisioner logic, could be shared lib in future
     api_url = "https://zero.tidbapi.com/v1alpha1/instances"
-    try:
-        cmd = ["curl", "-sS", "-X", "POST", api_url, "-H", "content-type: application/json", "-d", "{}"]
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        data = json.loads(result.stdout)
-        return data.get("instance", {}).get("connectionString")
-    except: return None
+    for i in range(3):
+        try:
+            cmd = ["curl", "-sS", "-X", "POST", api_url, "-H", "content-type: application/json", "-d", "{}"]
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            if result.returncode == 0:
+                data = json.loads(result.stdout)
+                dsn = data.get("instance", {}).get("connectionString")
+                if dsn: return dsn
+        except:
+            time.sleep(2)
+    return None
 
 def get_dsn():
     if os.path.exists(DSN_FILE):
