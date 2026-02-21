@@ -70,16 +70,6 @@
 
 ---
 
-## 🚀 Quick Start
-
-No Docker. No Sign-up. Just Python.
-
-```bash
-# 1. Run Hive Mind (Example)
-# (If missing dependencies, the script will tell you what to pip install)
-python skills/hive_mind/run.py --action set --key "my_name" --value "Lux"
-```
-
 ## 🏗 Architecture
 
 *   **Zero Config:** Uses TiDB Cloud Zero API to provision serverless databases on-the-fly.
