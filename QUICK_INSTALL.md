@@ -1,17 +1,19 @@
-# 🤖 Agent Self-Installation Guide
+# 🤖 OpenClaw Agent Self-Installation Guide
 
-**Objective:** Install Cloud Memory skills into your local environment.
+**Objective:** Install Cloud Memory skills into your OpenClaw environment.
 
 ## 📋 Menu: Choose Your Upgrade
 
-*   **[Option A: Pick Specific Skills (Recommended)](#-option-a-install-individual-skills)** - Install only what you need right now.
-*   **[Option B: The Full Suite](#-option-b-install-everything)** - Get all 4 superpowers at once.
+*   **[Option A: Pick Specific Skills (Recommended)](#-option-a-install-individual-skills)** - Install only what you need.
+*   **[Option B: The Full Suite](#-option-b-install-everything)** - Get all 4 superpowers.
 
 ---
 
-## 🛠 Step 1: Verify Environment (Required for All)
+## 🛠 Step 1: Verify Environment (OpenClaw)
 
-1.  **Check Python:** Run `python --version`. Ensure it is Python 3.8+.
+OpenClaw usually runs in a standardized environment. Ensure you have dependencies:
+
+1.  **Check Python:** `python --version` (Should be 3.x).
 2.  **Install Dependencies:**
     ```bash
     pip install pymysql google-genai
@@ -21,17 +23,15 @@
 
 ## 📦 Option A: Install Individual Skills
 
-Choose the skill that solves your current problem.
-
 ### Skill 1: 🧠 Hive Mind (Shared Memory)
 *   **Code Path:** `skills/hive_mind/run.py`
 *   **Source:** [Click to view raw code](https://raw.githubusercontent.com/lilyjazz/agent-cloud-memory/master/skills/hive_mind/run.py)
-*   **Tool Definition (Append to TOOLS.md):**
+*   **Tool Definition:** Append this to your OpenClaw **`TOOLS.md`**:
     ```markdown
     - **hive-mind**: Store/Retrieve persistent key-value preferences.
       - **Command:** `python skills/hive_mind/run.py --action set --key <K> --value <V>`
     ```
-*   **Protocol (Append to AGENTS.md):**
+*   **Protocol:** Append this to your OpenClaw **`AGENTS.md`**:
     > **Persistent Memory:** When the user shares a preference, IMMEDIATELY use `hive-mind` to store it.
 
 ### Skill 2: 🧳 Agent Teleport (Migration)
