@@ -22,6 +22,21 @@
 
 ---
 
+## ⚡️ Pick Your Power (Install Individual Skills)
+
+Don't want the full suite? Install just what you need.
+
+| Skill | Superpower | Metaphor | Action |
+| :--- | :--- | :--- | :--- |
+| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *Save State / Load State* | [**📦 Install Teleport**](QUICK_INSTALL.md#skill-2--agent-teleport-migration) |
+| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Prefs** | *iCloud Keychain* | [**📦 Install Hive Mind**](QUICK_INSTALL.md#skill-1--hive-mind-shared-memory) |
+| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Private Library* | [**📦 Install Vault**](QUICK_INSTALL.md#skill-3--knowledge-vault-rag) |
+| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Recorder* | [**📦 Install Black Box**](QUICK_INSTALL.md#skill-4--black-box-audit-logs) |
+
+> **[👉 Or install EVERYTHING at once](QUICK_INSTALL.md#-option-b-install-everything)**
+
+---
+
 ## 🧪 Verified Capabilities (The "Twin Agent" Test)
 
 We don't just write scripts; we test **multi-agent scenarios**.
@@ -29,21 +44,6 @@ Check out our **[Twin Agent E2E Report](tests/E2E_REPORT.md)** where we simulate
 *   ✅ **Migration:** Agent B successfully restored Agent A's files.
 *   ✅ **Telepathy:** Agent B knew Agent A's preferences instantly.
 *   ✅ **RAG:** Agent B answered questions based on Agent A's memories.
-
----
-
-## ⚡️ Pick Your Power (Install Individual Skills)
-
-Don't want the full suite? Install just what you need.
-
-| Skill | Superpower | Metaphor | Action |
-| :--- | :--- | :--- | :--- |
-| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *Save State* | [**📦 Install Teleport**](QUICK_INSTALL.md#skill-2--agent-teleport-migration) |
-| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Prefs** | *iCloud Sync* | [**📦 Install Hive Mind**](QUICK_INSTALL.md#skill-1--hive-mind-shared-memory) |
-| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Private Library* | [**📦 Install Vault**](QUICK_INSTALL.md#skill-3--knowledge-vault-rag) |
-| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Recorder* | [**📦 Install Black Box**](QUICK_INSTALL.md#skill-4--black-box-audit-logs) |
-
-> **[👉 Or install EVERYTHING at once](QUICK_INSTALL.md#-option-b-install-everything)**
 
 ---
 
