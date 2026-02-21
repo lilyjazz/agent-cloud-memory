@@ -22,6 +22,16 @@
 
 ---
 
+## 🧪 Verified Capabilities (The "Twin Agent" Test)
+
+We don't just write scripts; we test **multi-agent scenarios**.
+Check out our **[Twin Agent E2E Report](tests/E2E_REPORT.md)** where we simulated two isolated agents (Agent A & Agent B) collaborating via the cloud:
+*   ✅ **Migration:** Agent B successfully restored Agent A's files.
+*   ✅ **Telepathy:** Agent B knew Agent A's preferences instantly.
+*   ✅ **RAG:** Agent B answered questions based on Agent A's memories.
+
+---
+
 ## ⚡️ Pick Your Power (Install Individual Skills)
 
 Don't want the full suite? Install just what you need.
