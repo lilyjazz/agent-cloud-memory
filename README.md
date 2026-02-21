@@ -91,6 +91,16 @@ Check out our **[Twin Agent E2E Report](tests/E2E_REPORT.md)** where we simulate
 *   **Ephemeral:** Resources auto-recycle after 30 days (Perfect for working memory).
 *   **Standardized:** All skills output strict JSON.
 
+## 🚀 Publishing to ClawHub
+
+This repository includes a helper script to publish all skills to [ClawHub](https://clawhub.com) individually.
+
+1.  **Install CLI:** `npm i -g clawhub`
+2.  **Login:** `clawhub login`
+3.  **Publish All:** `python3 scripts/publish_to_clawhub.py`
+
+This allows users to install skills individually via `clawhub install agent-teleport`, `clawhub install hive-mind`, etc.
+
 ---
 
 **License:** MIT

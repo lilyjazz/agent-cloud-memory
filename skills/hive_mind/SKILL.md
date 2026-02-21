@@ -1,3 +1,14 @@
+---
+name: hive-mind
+description: Sync memories across multiple agents using a shared TiDB Zero database.
+metadata:
+  openclaw:
+    emoji: 🐝
+    requires:
+      bins: ["mysql", "python3"]
+      env: ["TIDB_HOST", "TIDB_PORT", "TIDB_USER", "TIDB_PASSWORD"]
+---
+
 # Hive Mind (Powered by TiDB Zero)
 
 ## Goal
@@ -8,8 +19,8 @@ To store user preferences and agent state in a persistent cloud database. This a
 ### 1. Add to `TOOLS.md`
 ```markdown
 - **hive-mind**: Store/Retrieve persistent key-value preferences.
-  - **Location:** `/path/to/skills/hive_mind/SKILL.md`
-  - **Command:** `python /path/to/skills/hive_mind/run.py --action set --key "theme" --value "dark"`
+  - **Location:** `{baseDir}/skills/hive_mind/SKILL.md`
+  - **Command:** `python {baseDir}/skills/hive_mind/run.py --action set --key "theme" --value "dark"`
 ```
 
 ### 2. Add to `AGENTS.md` (Protocol)
