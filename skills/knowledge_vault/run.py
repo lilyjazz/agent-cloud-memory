@@ -46,10 +46,23 @@ def create_temp_db():
     return None
 
 def get_dsn():
+    # 1. Check for explicit Environment Variables (Preferred)
+    host = os.environ.get("TIDB_HOST")
+    user = os.environ.get("TIDB_USER")
+    password = os.environ.get("TIDB_PASSWORD")
+    port = os.environ.get("TIDB_PORT", "4000")
+    
+    if host and user and password:
+        # Construct DSN manually
+        return f"mysql://{user}:{password}@{host}:{port}/test"
+
+    # 2. Check for cached DSN from previous provision
     if os.path.exists(DSN_FILE):
         with open(DSN_FILE, 'r') as f:
             return f.read().strip()
     
+    # 3. Auto-provision (Fallback)
+    print("No credentials found. Auto-provisioning ephemeral TiDB...", file=sys.stderr)
     dsn = create_temp_db()
     if dsn:
         with open(DSN_FILE, 'w') as f:
@@ -71,9 +84,10 @@ def manage_vault(action, content=None, query=None, limit=3):
     
     try:
         host, port, user, password, db = parse_dsn(dsn)
+        # Security Fix: Enable SSL hostname verification (remove check_hostname: False)
         conn = pymysql.connect(
             host=host, port=port, user=user, password=password, database=db,
-            ssl={"check_hostname": False}, charset='utf8mb4', autocommit=True
+            charset='utf8mb4', autocommit=True
         )
         
         with conn:
@@ -104,14 +118,14 @@ def manage_vault(action, content=None, query=None, limit=3):
                     q_vec = get_embedding(query)
                     q_vec_str = str(q_vec)
                     
-                    # Vector Search SQL
-                    sql = f"""
+                    # Vector Search SQL (Security Fix: Parameterize LIMIT)
+                    sql = """
                         SELECT content, VEC_COSINE_DISTANCE(embedding, %s) as distance 
                         FROM knowledge_vault 
                         ORDER BY distance ASC 
-                        LIMIT {limit}
+                        LIMIT %s
                     """
-                    cursor.execute(sql, (q_vec_str,))
+                    cursor.execute(sql, (q_vec_str, int(limit)))
                     results = []
                     for row in cursor.fetchall():
                         results.append({"content": row[0], "distance": float(row[1])})

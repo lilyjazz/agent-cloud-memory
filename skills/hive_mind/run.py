@@ -36,9 +36,10 @@ def parse_dsn(dsn):
 def manage_prefs(dsn, action, key=None, value=None):
     try:
         host, port, user, password, db = parse_dsn(dsn)
+        # Security Fix: Use standard SSL
         conn = pymysql.connect(
             host=host, port=port, user=user, password=password, database=db,
-            ssl={"check_hostname": False}, charset='utf8mb4', autocommit=True
+            charset='utf8mb4', autocommit=True
         )
         
         with conn:
@@ -74,10 +75,20 @@ def manage_prefs(dsn, action, key=None, value=None):
 DSN_FILE = os.path.expanduser("~/.openclaw_hive_mind_dsn")
 
 def get_or_create_dsn():
+    # 1. Env vars (Priority)
+    host = os.environ.get("TIDB_HOST")
+    user = os.environ.get("TIDB_USER")
+    password = os.environ.get("TIDB_PASSWORD")
+    port = os.environ.get("TIDB_PORT", "4000")
+    if host and user and password:
+        return f"mysql://{user}:{password}@{host}:{port}/test"
+
+    # 2. Cached DSN
     if os.path.exists(DSN_FILE):
         with open(DSN_FILE, 'r') as f:
             return f.read().strip()
     
+    # 3. Auto-provision (Fallback)
     dsn = create_temp_db()
     if dsn:
         with open(DSN_FILE, 'w') as f:

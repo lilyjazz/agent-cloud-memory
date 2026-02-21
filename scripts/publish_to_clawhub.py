@@ -4,6 +4,7 @@ import sys
 import subprocess
 import glob
 import re
+import time
 
 # Ensure we are at repo root
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +53,7 @@ def main():
     success_count = 0
     fail_count = 0
 
-    for skill_dir in skill_dirs:
+    for i, skill_dir in enumerate(skill_dirs):
         if skill_dir.startswith("__") or skill_dir.startswith("."):
             continue
             
@@ -60,7 +61,6 @@ def main():
         skill_md = os.path.join(full_path, "SKILL.md")
         
         if not os.path.exists(skill_md):
-            # print(f"⏭️  Skipping {skill_dir}: No SKILL.md found")
             continue
             
         # Extract slug from 'name' field
@@ -74,12 +74,14 @@ def main():
         print(f"📦 Publishing: {slug} ...")
         
         # Build command
-        # clawhub publish <path> --slug <slug> --name <slug> --changelog "Auto update"
+        # clawhub publish <path> --slug <slug> --name <slug> --version <version> --changelog "Auto update" --no-input
         cmd = [
             "clawhub", "publish", full_path,
             "--slug", slug,
             "--name", slug,
-            "--changelog", "Automated update via publish script"
+            "--version", "0.0.1",
+            "--changelog", "Initial release via Agent Cloud Memory automation",
+            "--no-input"
         ]
         
         # Execute
@@ -102,6 +104,11 @@ def main():
             print("❌ Error: 'clawhub' CLI not found.")
             print("   Please install it: npm i -g clawhub")
             sys.exit(1)
+            
+        # Rate limit prevention (wait 10s between publishes, unless it's the last one)
+        if i < len(skill_dirs) - 1:
+            print("⏳ Waiting 10s to respect rate limits...")
+            time.sleep(10)
             
     print(f"\nSummary: {success_count} published, {fail_count} failed.")
 

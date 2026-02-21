@@ -5,17 +5,35 @@ metadata:
   openclaw:
     emoji: 📚
     requires:
-      bins: ["mysql", "python3"]
+      bins: ["python3", "curl"]
       env: ["TIDB_HOST", "TIDB_PORT", "TIDB_USER", "TIDB_PASSWORD", "GEMINI_API_KEY"]
 ---
 
 # Knowledge Vault (Powered by TiDB Zero)
 
-## Goal
-To give the Agent a "Semantic Long-term Memory".
-Store text snippets as vectors and retrieve them by meaning (not just keyword match).
+## Overview
+**Knowledge Vault** is a Long-Term Memory module for AI Agents, powered by **TiDB Vector Search (RAG)**.
 
-## 📥 Installation
+Traditional agent memory (context window) is ephemeral and limited. Knowledge Vault allows agents to:
+1.  **Store:** Ingest documents, notes, and facts as vector embeddings.
+2.  **Retrieve:** Semantically search for relevant information based on user queries ("RAG").
+3.  **Remember:** Access unlimited historical context without overflowing the LLM prompt.
+
+## Why use this?
+*   **Infinite Recall:** Store millions of documents without confusing the agent.
+*   **Contextual Relevance:** Find *exact* paragraphs related to a question, not just keywords.
+*   **Privacy:** Keep your knowledge base private in your own TiDB Cloud instance.
+
+## Prerequisites
+*   **TiDB Cloud (Serverless):** With Vector Search enabled.
+*   **Embedding Model:** Requires `GEMINI_API_KEY` (or compatible).
+
+### 🔐 Security & Provisioning
+This skill operates in two modes:
+1.  **Bring Your Own Database (Recommended):** Set `TIDB_HOST`, `TIDB_USER`, `TIDB_PASSWORD` environment variables. The skill will use your existing database.
+2.  **Auto-Provisioning (Fallback):** If no credentials are found, the skill calls the **TiDB Zero API** to create a temporary, ephemeral database for you. It caches the connection string locally (`~/.openclaw_knowledge_vault_dsn`) to persist memory across runs.
+
+## Installation
 
 ### 1. Add to `TOOLS.md`
 ```markdown
@@ -28,5 +46,11 @@ Store text snippets as vectors and retrieve them by meaning (not just keyword ma
 Copy [PROTOCOL.md](PROTOCOL.md).
 
 ## Usage
-*   `--action add --content "The user loves spicy food."`
-*   `--action search --query "What food does the user like?"`
+*   **Add Knowledge:**
+    ```bash
+    python {baseDir}/run.py --action add --content "The user prefers spicy food but is allergic to peanuts."
+    ```
+*   **Search (RAG):**
+    ```bash
+    python {baseDir}/run.py --action search --query "What are the user's dietary restrictions?"
+    ```
