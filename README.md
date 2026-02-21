@@ -22,14 +22,18 @@
 
 ---
 
-## ⚡️ Quick Links
+## ⚡️ Pick Your Power (Install Individual Skills)
 
-| Skill | Superpower | Metaphor |
-| :--- | :--- | :--- |
-| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *Save State / Load State* |
-| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Preference** | *iCloud Keychain* |
-| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Private Library* |
-| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Data Recorder* |
+Don't want the full suite? Install just what you need.
+
+| Skill | Superpower | Metaphor | Action |
+| :--- | :--- | :--- | :--- |
+| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *Save State* | [**📦 Install Teleport**](QUICK_INSTALL.md#skill-2--agent-teleport-migration) |
+| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Prefs** | *iCloud Sync* | [**📦 Install Hive Mind**](QUICK_INSTALL.md#skill-1--hive-mind-shared-memory) |
+| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Private Library* | [**📦 Install Vault**](QUICK_INSTALL.md#skill-3--knowledge-vault-rag) |
+| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Recorder* | [**📦 Install Black Box**](QUICK_INSTALL.md#skill-4--black-box-audit-logs) |
+
+> **[👉 Or install EVERYTHING at once](QUICK_INSTALL.md#-option-b-install-everything)**
 
 ---
 
