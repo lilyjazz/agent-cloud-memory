@@ -21,26 +21,26 @@
 
 | Skill | Superpower | Metaphor |
 | :--- | :--- | :--- |
-| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *RPG Save Game / Time Machine* |
-| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Preference** | *iCloud / Chrome Sync* |
-| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Google Search for Brain* |
-| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Recorder* |
+| **[🧳 Agent Teleport](skills/agent_teleport)** | **Migration** | *Save State / Load State* |
+| **[🧠 Hive Mind](skills/hive_mind)** | **Sync Preference** | *iCloud Keychain* |
+| **[📚 Knowledge Vault](skills/knowledge_vault)** | **Vector RAG** | *Private Library* |
+| **[📼 Black Box](skills/black_box)** | **Audit Logs** | *Flight Data Recorder* |
 
 ---
 
 ## 📦 The 4 Superpowers (Deep Dive)
 
 ### 1. 🧳 Agent Teleport (Soul Transfer)
-> *The "Time Machine" Backup.*
+> *The "Save Game" for Work.*
 
-*   **Metaphor:** Like **saving your game** in an RPG, or **Apple Time Machine**.
-*   **Use Case:** You worked on a project on your Office PC. Now you're at a coffee shop with your Laptop. You don't want to start over.
+*   **Metaphor:** Like **saving your game state** before a boss fight, or moving your save file to a new console.
+*   **Use Case:** You worked on a project on your Office PC. Now you're at a coffee shop with your Laptop.
 *   **Action:**
     *   *Office:* "Teleport Pack." -> Generates a Code.
     *   *Laptop:* "Teleport Restore [Code]." -> **Boom!** Your files, memory, and personality are instantly restored.
 
 ### 2. 🧠 Hive Mind (Cloud Synapse)
-*   **Metaphor:** Like **iCloud Sync** for your Agent's brain.
+*   **Metaphor:** Like **iCloud Keychain** for your Agent's preferences.
 *   **Use Case:** Your Desktop Agent learned that you hate "verbose code". Your Mobile Agent shouldn't need to be told again.
 *   **Action:**
     *   *Agent A:* Saves preference `style="terse"` to Hive Mind.
@@ -48,15 +48,15 @@
     *   **Result:** All your agents act like a single, unified consciousness.
 
 ### 3. 📚 Knowledge Vault (Infinite Library)
-*   **Metaphor:** A **Search Engine** inside your Agent's head.
+*   **Metaphor:** A **Private Library** with a semantic librarian.
 *   **Use Case:** You feed the Agent 100 PDF contracts. A week later, you ask: "Which contract had the 30-day clause?"
 *   **Action:**
     *   Agent stores text embeddings in the Vault.
     *   Agent queries the Vault using vector search.
-    *   **Result:** It recalls the exact paragraph instantly, without re-reading the files.
+    *   **Result:** It retrieves the exact paragraph instantly from its long-term storage.
 
 ### 4. 📼 Black Box (Flight Recorder)
-*   **Metaphor:** The **Black Box** on an airplane.
+*   **Metaphor:** The **Flight Data Recorder** on an airplane.
 *   **Use Case:** You sent an Agent to update your production server overnight. You wake up, and the server is dead. Local logs are gone.
 *   **Action:**
     *   The Agent streamed its last thoughts to the Black Box (TiDB Cloud) *before* it crashed.
