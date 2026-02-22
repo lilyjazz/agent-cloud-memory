@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3](https://img.shields.io/badge/Python-3-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Works with OpenClaw](https://img.shields.io/badge/Works%20with-OpenClaw-purple.svg)](https://github.com/openclaw/openclaw)
 [![Serverless](https://img.shields.io/badge/Serverless-TiDB%20Zero-pink.svg)](https://tidb.cloud)
 
@@ -23,7 +23,9 @@
 
 ---
 
-## ⚡️ Pick Your Power (Install Individual Skills)
+## ⚡️ Quick Start
+
+### Pick Your Power (Install Individual Skills)
 
 Don't want the full suite? Install just what you need.
 
@@ -101,6 +103,10 @@ This repository includes a helper script to publish all skills to [ClawHub](http
 
 This allows users to install skills individually via `clawhub install agent-teleport`, `clawhub install hive-mind`, etc.
 
----
+## 🤝 Contributing
 
-**License:** MIT
+Contributions are welcome! Please check out [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to proceed.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
